@@ -4,6 +4,11 @@ if &bg != 'light'
   set background=light
 end
 
+hi clear
+if exists("syntax_on")
+    syntax reset
+endif
+
 let colors_name = 'github-light'
 
 " Highlighting function
