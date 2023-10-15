@@ -1,4 +1,7 @@
 " !::exe [So | call colorizer#ColorHighlight(1)]
+" vi:ft=vim:fileencoding=utf-8:foldmethod=marker
+
+" Setup {{{
 
 if &bg != 'light'
   set background=light
@@ -40,7 +43,8 @@ function! s:_ (name, ...)
   execute cmd
 endfunc
 
-" Colors                                                                     {{{
+" }}}
+" Colors {{{
 
 let s:black0    = '#000000'
 let s:black1    = '#24292e'
@@ -53,7 +57,7 @@ let s:brightyellow    = '#ffe914'
 
 let s:gh_link = '#0366d6'
 
-let s:gh_grey   = '#8f9aa9'
+let s:gh_grey   = '#6f7a99'
 let s:gh_red    = '#DB524E'
 let s:gh_orange = '#e98642'
 let s:gh_blue0  = '#0d33a5'
@@ -78,9 +82,8 @@ let s:gh_danger_fg  = '#c03545'
 let s:gh_danger_bg0 = '#ffdce0'
 let s:gh_danger_bg1 = '#ffeef0'
 
-
 " }}}
-" Theme                                                                      {{{
+" Theme {{{
 
 let theme = {}
 let theme.base                  = '#202020'
@@ -91,8 +94,8 @@ let theme.fg_light              = '#454B53'
 let theme.fg_lighter            = '#666D74'
 let theme.fg_subtle             = '#c0c0c0'
 let theme.fg_dark               = '#24292e'
-let theme.fg_widget             = '#cad0d3'
-let theme.fg_conceal            = '#e2e8eb'
+let theme.fg_widget             = '#aab0c3'
+let theme.fg_conceal            = '#d2d8db'
 let theme.fg_overlay            = '#f0f0f0'
 let theme.fg_widget_dark        = '#8f9aa9'
 let theme.fg_widget_alt         = '#ffffff'
@@ -103,6 +106,7 @@ let theme.bg                    = '#ffffff'
 let theme.bg_subtle             = '#f0f0f0'
 let theme.bg_popover            = '#e0e0e0'
 let theme.bg_verysubtle         = '#f5f5f5'
+let theme.bg_supersubtle        = '#f8f9fa'
 let theme.bg_widget             = '#ffffff'
 let theme.bg_overlay            = '#121212'
 let theme.bg_dark               = '#d0d0d0'
@@ -113,7 +117,7 @@ let theme.bg_widget_alt_nc      = '#aaaaaa'
 let theme.fg_hl                 = '#a3a3a3'
 let theme.bg_hl                 = '#404040'
 
-let theme.hover                 = '#505050'
+let theme.hover                 = '505050'
 
 let theme.hl                    = '#599eff'
 let theme.hl_fg                 = '#ffffff'
@@ -137,7 +141,7 @@ let theme.folded_bg             = '#252525'
 let theme.folded_fg             = '#999999'
 
 " }}}
-" General UI                                                                 {{{
+" General UI {{{
 
 let s:text_colors = {
 \ 'Normal':  theme.fg,
@@ -164,7 +168,7 @@ call s:_('SecondaryCursor',  '', theme.bg_hl, 'none')
 call s:_('CursorLine',       '',              theme.bg_verysubtle)
 call s:_('CursorColumn',     '',              theme.bg_verysubtle)
 call s:_('CursorLineNr',     theme.hl,        theme.bg_verysubtle, 'none')
-call s:_('LineNr',           theme.fg_widget, theme.bg_widget, 'none')
+call s:_('LineNr',           theme.fg_widget, theme.bg_supersubtle, 'none')
 
 call s:_('TermCursor',       theme.bg,        'none',            'reverse')
 call s:_('TermCursorNC',     theme.fg_hl,     'none',            'reverse')
@@ -190,16 +194,16 @@ call s:_('PmenuSbar',        '',       theme.bg_dark)
 call s:_('PmenuThumb',       '#666660', '#666660')
 
 if exists('&pumblend')
-  set pumblend=20
+  set pumblend=10
 end
 
 call s:_('Terminal',         s:white,  s:black0, '')
 
 
-call s:_('Folded',           'none',          theme.bg_verysubtle,  'none')
+call s:_('Folded',           'none',          theme.bg_subtle,  'none')
 call s:_('FoldColumn',       theme.fg_subtle, theme.bg_widget,      '')
 call s:_('SignColumn',       '',              theme.bg_widget, '')
-call s:_('ColorColumn',      '',              theme.bg_widget, '')
+call s:_('ColorColumn',      '',              theme.bg_supersubtle, '')
 
 
 call s:_('IndentGuidesEven', theme.fg_widget, '', '')
@@ -227,7 +231,7 @@ call s:_('BufferSign',        theme.fg_widget_dark, s:bg_other, 'none')
 call s:_('BufferPart',        s:gh_info_fg,     s:gh_info_bg0, 'bold')
 
 " }}}
-" Search, Highlight, Conceal, Messages                                               {{{
+" Search, Highlight, Conceal, Messages {{{
 
 call s:_('Search',          '', s:gh_search,      'none')
 call s:_('IncSearch',       '', s:gh_search_dark, 'none')
@@ -267,13 +271,13 @@ hi! link ModeMsg    TextSpecial
 
 
 " }}}
-" Main Syntax                                                               {{{1
+" Main Syntax {{{
 
 call s:_('Tag',                  s:gh_url, '',        'underline')
 call s:_('Link',                 s:gh_url, '',        'underline')
 call s:_('URL',                  s:gh_url, '',        'underline')
 
-call s:_('Comment',              s:gh_grey, '',        '')
+call s:_('Comment',              s:gh_grey, '',        'italic')
 call s:_('CommentBold',          s:gh_grey, '',        'bold')
 call s:_('SpecialComment',       '#7597c6', '',        'bold')
 hi! link CommentLabel   CommentBold
@@ -289,7 +293,7 @@ call s:_('Include',              s:gh_blue1, '',        'bold')
 
 call s:_('Repeat',               s:gh_red, '',        '')
 call s:_('Keyword',              s:gh_red, '',        '')
-call s:_('Statement',            s:gh_red, '',        'none')
+call s:_('Statement',            s:gh_red, '',        'bold')
 call s:_('Label',                s:gh_red, '',        '')
 
 call s:_('Operator',             s:gh_blue1, '',        '')
@@ -322,7 +326,7 @@ call s:_('Identifier',           theme.fg,  '',        'none')
 call s:_('Variable',             '#ffe790', '',        'none')
 call s:_('Argument',             theme.fg,  '',        'none')
 
-call s:_('Function',             s:gh_purple, '',        'none')
+call s:_('Function',             s:gh_purple, '',        'bold')
 call s:_('Method',               s:gh_purple, '',        'bold')
 
 call s:_('Symbol',               s:gh_blue1, '',        'none')
@@ -346,7 +350,7 @@ call s:_('RegexpDelimiter',      '#540063', 'none',        'bold')
 call s:_('RegexpKey',            '#5f0041', 'none',        'bold')
 
 " }}}
-" Diff                                                                       {{{
+" Diff {{{
 
 call s:_('diffLine',    s:gh_grey, s:gh_info_bg1, 'none')
 call s:_('diffSubName', s:gh_grey, s:gh_info_bg1, 'none')
@@ -369,8 +373,8 @@ call s:_('DiffAddedGutter',    s:gh_add_fg, s:gh_add_bg1)
 call s:_('DiffModifiedGutter', s:gh_info_fg, s:gh_info_bg0)
 call s:_('DiffRemovedGutter',  s:gh_danger_fg, s:gh_danger_bg0)
 
-"                                                                            }}}
-" Additionnal/Common groups                                         {{{1
+" }}}
+" Additionnal/Common groups {{{1
 
 call s:_('DbgCurrent',           '#DEEBFE', '#345FA8', '')
 call s:_('DbgBreakPt',           '',        '#4F0037', '')
@@ -386,14 +390,14 @@ hi!  link SneakStreakMask        EasyMotionShadeDefault
 
 " }}}
 
-" Languages/Others                                                    {{{1
+" Languages/Others {{{1
 
-" Help                                                                      {{{2
+" Help {{{2
 
 hi! link helpURL           URL
 hi! link helpHyperTextJump Purple
 
-" PHP                                                                       {{{2
+" PHP {{{2
 
 hi! link phpFunctions Function
 hi! link phpSuperglobal Identifier
@@ -406,11 +410,11 @@ hi! link phpOperator Normal
 hi! link phpRelation Normal
 hi! link phpVarSelector Identifier
 
-" Python                                                                    {{{2
+" Python {{{2
 
 hi! link pythonOperator Operator
 
-" Ruby                                                                      {{{2
+" Ruby {{{2
 
 hi! link rubyRegexpDelimiter       RegexpDelimiter
 hi! link rubyRegexp                Regexp
@@ -435,7 +439,7 @@ hi! link rubyStringDelimiter        StringDelimiter
 hi! link rubyInterpolationDelimiter Identifier
 
 
-" Erlang                                                                    {{{2
+" Erlang {{{2
 
 hi! link erlangAtom rubySymbol
 hi! link erlangBIF rubyPredefinedIdentifier
@@ -443,11 +447,11 @@ hi! link erlangFunction rubyPredefinedIdentifier
 hi! link erlangDirective Statement
 hi! link erlangNode Identifier
 
-" CoffeeScript                                                              {{{2
+" CoffeeScript {{{2
 
 hi! link coffeeRegExp rubyRegexp
 
-" Lua & Moonscript'                                                         {{{2
+" Lua & Moonscript' {{{2
 
 hi! link luaOperator Conditional
 
@@ -458,7 +462,7 @@ hi! link moonObjAssign  StorageClass
 hi! link moonObjAssign  StorageClass
 hi! link moonConstant   Global
 
-" Objective-C/Cocoa                                                         {{{2
+" Objective-C/Cocoa {{{2
 
 hi! link objcClass Type
 hi! link cocoaClass objcClass
@@ -470,6 +474,14 @@ hi! link objcMethodName Identifier
 hi! link objcMethodArg Normal
 hi! link objcMessageName Identifier
 
-" 1}}}
+" COC {{{2
+
+call s:_('CocCodeLens', '#808090', '', 'italic')
+
+" Telescope {{{2
+
+call s:_('TelescopeTitle', '', 'none', '')
+
+" 2}}}
 
 " 1}}}
