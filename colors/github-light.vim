@@ -478,6 +478,12 @@ hi! link objcMessageName Identifier
 
 call s:_('CocCodeLens', '#808090', '', 'italic')
 
+" GitGutter {{{2
+
+call s:_('GitGutterAdd', '#559900', '', '')
+call s:_('GitGutterChange', '#eebb00', '', '')
+call s:_('GitGutterDelete', '#ff55e2', '', '')
+
 " Telescope {{{2
 
 call s:_('TelescopeTitle', '', 'none', '')
