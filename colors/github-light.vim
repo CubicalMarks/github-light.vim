@@ -202,7 +202,7 @@ call s:_('Terminal',         s:white,  s:black0, '')
 
 call s:_('Folded',           'none',          theme.bg_subtle,  'none')
 call s:_('FoldColumn',       theme.fg_subtle, theme.bg_widget,      '')
-call s:_('SignColumn',       '',              theme.bg_widget, '')
+call s:_('SignColumn',       '',              theme.bg_supersubtle, '')
 call s:_('ColorColumn',      '',              theme.bg_supersubtle, '')
 
 
