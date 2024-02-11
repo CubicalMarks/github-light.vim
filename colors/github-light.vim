@@ -170,7 +170,7 @@ call s:_('CursorColumn',     '',              theme.bg_verysubtle)
 call s:_('CursorLineNr',     theme.hl,        theme.bg_verysubtle, 'none')
 call s:_('LineNr',           theme.fg_widget, theme.bg_supersubtle, 'none')
 
-call s:_('TermCursor',       theme.bg,        'none',            'reverse')
+call s:_('TermCursor',       '', theme.base,  'reverse')
 call s:_('TermCursorNC',     theme.fg_hl,     'none',            'reverse')
 call s:_('TermNormal',       theme.bg,        theme.base,    '')
 hi! link TermNormalNC TermNormal
@@ -209,9 +209,9 @@ call s:_('ColorColumn',      '',              theme.bg_supersubtle, '')
 call s:_('IndentGuidesEven', theme.fg_widget, '', '')
 call s:_('IndentGuidesOdd',  theme.fg_widget, '', '')
 
-call s:_('TabLine',          s:white,       s:black1, 'bold')
-call s:_('TabLineSel',       s:gh_link,     s:black1, 'bold')
-call s:_('TabLineFill',      'none',        s:black1, 'bold')
+call s:_('TabLine',          s:gh_grey,       theme.bg_subtle, 'none')
+call s:_('TabLineSel',       s:black0,        theme.bg_dark, 'bold')
+call s:_('TabLineFill',      'none',          'none', 'bold')
 
 let s:bg_current = theme.bg
 let s:bg_visible = theme.bg_subtle
@@ -477,6 +477,64 @@ hi! link objcMessageName Identifier
 " COC {{{2
 
 call s:_('CocCodeLens', '#808090', '', 'italic')
+" hi! link CocVirtualText Comment
+" hi! link CocCursorRange Search
+" hi! link CocDeprecatedHighlight CocStrikeThrough
+" hi! link CocErrorFloat DiagnosticError
+" hi! link CocErrorHighlight DiagnosticUnderlineError
+" hi! link CocErrorSign DiagnosticSignError
+" hi! link CocErrorVirtualText DiagnosticVirtualTextError
+" hi! link CocFadeOut Conceal
+" hi! link CocFloatActive CocSearch
+" hi! link CocFloatDividingLine CocVirtualText
+" hi! link CocFloatSbar PmenuSbar
+" hi! link CocFloatThumb PmenuThumb
+" hi! link CocFloating NormalFloat
+" hi! link CocHighlightRead CocHighlightText
+" hi! link CocHighlightText CursorColumn
+" hi! link CocHighlightWrite CocHighlightText
+" hi! link CocHintFloat DiagnosticHint
+" hi! link CocHintHighlight DiagnosticUnderlineHint
+" hi! link CocHintSign DiagnosticSignHint
+" hi! link CocHintVirtualText DiagnosticVirtualTextHint
+" hi! link CocHoverRange Search
+" hi! link CocInfoFloat DiagnosticInfo
+" hi! link CocInfoHighlight DiagnosticUnderlineInfo
+" hi! link CocInfoSign DiagnosticSignInfo
+" hi! link CocInfoVirtualText DiagnosticVirtualTextInfo
+" hi! link CocInlayHintParameter CocInlayHint
+" hi! link CocInlayHintType CocInlayHint
+" hi! link CocInputBoxVirtualText CocVirtualText
+" hi! link CocLinkedEditing CocCursorRange
+" hi! link CocListMode ModeMsg
+" hi! link CocListPath Comment
+" hi! link CocListSearch CocSearch
+" hi! link CocMarkdownCode markdownCode
+" hi! link CocMarkdownHeader markdownH1
+" hi! link CocNotificationButton CocUnderline
+" hi! link CocNotificationError CocErrorFloat
+" hi! link CocNotificationInfo CocInfoFloat
+" hi! link CocNotificationWarning CocWarningFloat
+" hi! link CocPumDeprecated CocStrikeThrough
+" hi! link CocPumDetail Comment
+" hi! link CocPumMenu CocFloating
+" hi! link CocPumSearch CocSearch
+" hi! link CocPumShortcut Comment
+" hi! link CocPumVirtualText CocVirtualText
+" hi! link CocSelectedRange CocHighlightText
+" hi! link CocSemDecorator Identifier
+" hi! link CocSemStruct Identifier
+" hi! link CocSnippetVisual Visual
+" hi! link CocSymbolDefault MoreMsg
+" hi! link CocTreeDescription Comment
+" hi! link CocTreeOpenClose CocBold
+" hi! link CocTreeSelected CursorLine
+" hi! link CocTreeTitle Title
+" hi! link CocUnusedHighlight CocFadeOut
+" hi! link CocWarningFloat DiagnosticWarn
+" hi! link CocWarningHighlight DiagnosticUnderlineWarn
+" hi! link CocWarningSign DiagnosticSignWarn
+" hi! link CocWarningVirtualText DiagnosticVirtualTextWarn
 
 " GitGutter {{{2
 
