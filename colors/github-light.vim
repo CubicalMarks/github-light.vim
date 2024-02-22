@@ -277,7 +277,7 @@ call s:_('Tag',                  s:gh_url, '',        'underline')
 call s:_('Link',                 s:gh_url, '',        'underline')
 call s:_('URL',                  s:gh_url, '',        'underline')
 
-call s:_('Comment',              s:gh_grey, '',        'italic')
+call s:_('Comment',              s:gh_grey, '',        '')
 call s:_('CommentBold',          s:gh_grey, '',        'bold')
 call s:_('SpecialComment',       '#7597c6', '',        'bold')
 hi! link CommentLabel   CommentBold
@@ -474,9 +474,9 @@ hi! link objcMethodName Identifier
 hi! link objcMethodArg Normal
 hi! link objcMessageName Identifier
 
-" COC {{{2
+" COC {{{
 
-call s:_('CocCodeLens', '#808090', '', 'italic')
+call s:_('CocCodeLens', theme.fg_widget_dark, '', 'italic')
 " hi! link CocVirtualText Comment
 " hi! link CocCursorRange Search
 " hi! link CocDeprecatedHighlight CocStrikeThrough
