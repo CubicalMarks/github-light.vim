@@ -102,14 +102,14 @@ let theme.fg_widget_alt         = '#ffffff'
 let theme.fg_widget_alt_nc      = '#333333'
 
 
-let theme.bg                    = '#ffffff'
-let theme.bg_subtle             = '#f0f0f0'
-let theme.bg_popover            = '#e0e0e0'
-let theme.bg_verysubtle         = '#f5f5f5'
-let theme.bg_supersubtle        = '#f8f9fa'
+let theme.bg                    = 'none'
+let theme.bg_popover            = '#e0e0e2'
+let theme.bg_subtle             = '#eeeef1'
+let theme.bg_verysubtle         = '#efeff2'
+let theme.bg_supersubtle        = '#f1f1f3'
 let theme.bg_widget             = '#ffffff'
-let theme.bg_overlay            = '#121212'
-let theme.bg_dark               = '#d0d0d0'
+let theme.bg_overlay            = '#121214'
+let theme.bg_dark               = '#d0d0d2'
 let theme.bg_light              = '#e5e7e9'
 let theme.bg_widget_alt         = '#4c4c4c'
 let theme.bg_widget_alt_nc      = '#aaaaaa'
@@ -157,8 +157,8 @@ for key in keys(s:text_colors)
   call s:_('Bold' . key, s:text_colors[key], '', 'bold')
 endfor
 
-call s:_('Normal',           theme.fg,        theme.bg)
-call s:_('EndOfBuffer',      theme.fg_widget, theme.bg)
+call s:_('Normal',           theme.fg,        'none')
+call s:_('EndOfBuffer',      theme.fg_widget, 'none')
 call s:_('NormalPopup',      theme.fg,        theme.bg_subtle)
 call s:_('NormalPopover',    theme.fg,        theme.bg_popover)
 
@@ -168,7 +168,7 @@ call s:_('SecondaryCursor',  '', theme.bg_hl, 'none')
 call s:_('CursorLine',       '',              theme.bg_verysubtle)
 call s:_('CursorColumn',     '',              theme.bg_verysubtle)
 call s:_('CursorLineNr',     theme.hl,        theme.bg_verysubtle, 'none')
-call s:_('LineNr',           theme.fg_widget, theme.bg_supersubtle, 'none')
+call s:_('LineNr',           theme.fg_widget, theme.bg_verysubtle, 'none')
 
 call s:_('TermCursor',       '', theme.base,  'reverse')
 call s:_('TermCursorNC',     theme.fg_hl,     'none',            'reverse')
@@ -185,7 +185,7 @@ call s:_('StatusLineNC',   theme.fg_lighter,    theme.bg_dark,          'none')
 call s:_('StatusLinePart', theme.fg_widget_alt, theme.bg_widget_alt,     'bold')
 call s:_('StatusLinePartNC', theme.fg_widget_alt_nc, theme.bg_widget_alt_nc,     'bold')
 call s:_('Separator',      '#4c4c4c',           'none',                  '')
-call s:_('VertSplit',      theme.fg_subtle,     theme.bg_widget,         'none')
+call s:_('VertSplit',      theme.fg_widget,     theme.bg_verysubtle,    'none')
 
 call s:_('Pmenu',            theme.fg_overlay, theme.bg_overlay)
 call s:_('PmenuSel',         theme.hl_fg,      theme.hl)
@@ -202,8 +202,8 @@ call s:_('Terminal',         s:white,  s:black0, '')
 
 call s:_('Folded',           'none',          theme.bg_subtle,  'none')
 call s:_('FoldColumn',       theme.fg_subtle, theme.bg_widget,      '')
-call s:_('SignColumn',       '',              theme.bg_supersubtle, '')
-call s:_('ColorColumn',      '',              theme.bg_supersubtle, '')
+call s:_('SignColumn',       '',              theme.bg_verysubtle, '')
+call s:_('ColorColumn',      '',              theme.bg_verysubtle, '')
 
 
 call s:_('IndentGuidesEven', theme.fg_widget, '', '')
@@ -213,7 +213,7 @@ call s:_('TabLine',          s:gh_grey,       theme.bg_subtle, 'none')
 call s:_('TabLineSel',       s:black0,        theme.bg_dark, 'bold')
 call s:_('TabLineFill',      'none',          'none', 'bold')
 
-let s:bg_current = theme.bg
+let s:bg_current = 'none'
 let s:bg_visible = theme.bg_subtle
 let s:bg_other   = s:black1
 
@@ -369,9 +369,9 @@ call s:_('DiffAdded',    theme.fg_light, s:gh_add_bg1)
 call s:_('DiffModified', theme.fg_light, s:gh_info_bg0)
 call s:_('DiffRemoved',  theme.fg_light, s:gh_danger_bg0)
 
-call s:_('DiffAddedGutter',    s:gh_add_fg, s:gh_add_bg1)
-call s:_('DiffModifiedGutter', s:gh_info_fg, s:gh_info_bg0)
-call s:_('DiffRemovedGutter',  s:gh_danger_fg, s:gh_danger_bg0)
+call s:_('DiffAddedGutter',    s:gh_add_fg, theme.bg_verysubtle)
+call s:_('DiffModifiedGutter', s:gh_info_fg, theme.bg_verysubtle)
+call s:_('DiffRemovedGutter',  s:gh_danger_fg, theme.bg_verysubtle)
 
 " }}}
 " Additionnal/Common groups {{{1
@@ -474,7 +474,7 @@ hi! link objcMethodName Identifier
 hi! link objcMethodArg Normal
 hi! link objcMessageName Identifier
 
-" COC {{{
+" COC {{{2
 
 call s:_('CocCodeLens', theme.fg_widget_dark, '', 'italic')
 " hi! link CocVirtualText Comment
@@ -538,9 +538,10 @@ call s:_('CocCodeLens', theme.fg_widget_dark, '', 'italic')
 
 " GitGutter {{{2
 
-call s:_('GitGutterAdd', '#559900', '', '')
-call s:_('GitGutterChange', '#eebb00', '', '')
-call s:_('GitGutterDelete', '#ff55e2', '', '')
+call s:_('GitGutterAdd', '#559900', theme.bg_verysubtle, 'none')
+call s:_('GitGutterChange', '#eebb00', theme.bg_verysubtle, 'none')
+call s:_('GitGutterChangeDelete', '#eebb00', theme.bg_verysubtle, 'none')
+call s:_('GitGutterDelete', '#ff55e2', theme.bg_verysubtle, 'none')
 
 " Telescope {{{2
 
