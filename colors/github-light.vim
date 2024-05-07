@@ -92,7 +92,7 @@ let theme.insensitive_base      = '#282828'
 let theme.fg                    = '#24292e'
 let theme.fg_light              = '#454B53'
 let theme.fg_lighter            = '#666D74'
-let theme.fg_subtle             = '#c0c0c0'
+let theme.fg_subtle             = '#aaaabb'
 let theme.fg_dark               = '#24292e'
 let theme.fg_widget             = '#aab0c3'
 let theme.fg_conceal            = '#d2d8db'
@@ -102,11 +102,11 @@ let theme.fg_widget_alt         = '#ffffff'
 let theme.fg_widget_alt_nc      = '#333333'
 
 
-let theme.bg                    = 'none'
+let theme.bg                    = '#ffffff'
 let theme.bg_popover            = '#e0e0e2'
-let theme.bg_subtle             = '#eeeef1'
-let theme.bg_verysubtle         = '#efeff2'
-let theme.bg_supersubtle        = '#f1f1f3'
+let theme.bg_subtle             = '#f1f1f3'
+let theme.bg_verysubtle         = '#f3f3f6'
+let theme.bg_supersubtle        = '#f6f6f8'
 let theme.bg_widget             = '#ffffff'
 let theme.bg_overlay            = '#121214'
 let theme.bg_dark               = '#d0d0d2'
@@ -157,8 +157,8 @@ for key in keys(s:text_colors)
   call s:_('Bold' . key, s:text_colors[key], '', 'bold')
 endfor
 
-call s:_('Normal',           theme.fg,        'none')
-call s:_('EndOfBuffer',      theme.fg_widget, 'none')
+call s:_('Normal',           theme.fg,        theme.bg)
+call s:_('EndOfBuffer',      theme.fg_widget, theme.bg)
 call s:_('NormalPopup',      theme.fg,        theme.bg_subtle)
 call s:_('NormalPopover',    theme.fg,        theme.bg_popover)
 
@@ -171,7 +171,7 @@ call s:_('CursorLineNr',     theme.hl,        theme.bg_verysubtle, 'none')
 call s:_('LineNr',           theme.fg_widget, theme.bg_verysubtle, 'none')
 
 call s:_('TermCursor',       '', theme.base,  'reverse')
-call s:_('TermCursorNC',     theme.fg_hl,     'none',            'reverse')
+call s:_('TermCursorNC',     theme.fg_hl,     '',            'reverse')
 call s:_('TermNormal',       theme.bg,        theme.base,    '')
 hi! link TermNormalNC TermNormal
 
@@ -184,7 +184,7 @@ call s:_('StatusLine',     theme.fg_light,      theme.bg_dark,          'none')
 call s:_('StatusLineNC',   theme.fg_lighter,    theme.bg_dark,          'none')
 call s:_('StatusLinePart', theme.fg_widget_alt, theme.bg_widget_alt,     'bold')
 call s:_('StatusLinePartNC', theme.fg_widget_alt_nc, theme.bg_widget_alt_nc,     'bold')
-call s:_('Separator',      '#4c4c4c',           'none',                  '')
+call s:_('Separator',      '#4c4c4c',           '',                  '')
 call s:_('VertSplit',      theme.fg_widget,     theme.bg_verysubtle,    'none')
 
 call s:_('Pmenu',            theme.fg_overlay, theme.bg_overlay)
@@ -200,8 +200,8 @@ end
 call s:_('Terminal',         s:white,  s:black0, '')
 
 
-call s:_('Folded',           'none',          theme.bg_subtle,  'none')
-call s:_('FoldColumn',       theme.fg_subtle, theme.bg_widget,      '')
+call s:_('Folded',           '',          theme.bg_subtle,  'none')
+call s:_('FoldColumn',       theme.fg_subtle, theme.bg_verysubtle, '')
 call s:_('SignColumn',       '',              theme.bg_verysubtle, '')
 call s:_('ColorColumn',      '',              theme.bg_verysubtle, '')
 
@@ -211,9 +211,9 @@ call s:_('IndentGuidesOdd',  theme.fg_widget, '', '')
 
 call s:_('TabLine',          s:gh_grey,       theme.bg_subtle, 'none')
 call s:_('TabLineSel',       s:black0,        theme.bg_dark, 'bold')
-call s:_('TabLineFill',      'none',          'none', 'bold')
+call s:_('TabLineFill',      '',          '', 'bold')
 
-let s:bg_current = 'none'
+let s:bg_current = ''
 let s:bg_visible = theme.bg_subtle
 let s:bg_other   = s:black1
 
@@ -237,8 +237,8 @@ call s:_('Search',          '', s:gh_search,      'none')
 call s:_('IncSearch',       '', s:gh_search_dark, 'none')
 call s:_('IncSearchCursor', '',     '',               'reverse')
 
-call s:_('Conceal',         theme.fg_conceal, 'none',    '')
-call s:_('SpecialKey',      '#333333',        'none',    '')
+call s:_('Conceal',         theme.fg_conceal, '',    '')
+call s:_('SpecialKey',      '#333333',        '',    '')
 call s:_('NonText',         theme.fg_subtle,  '',        'bold')
 call s:_('MatchParen',      '',               '#BCE3FF', 'none')
 call s:_('SpecialOpt',      '#868680',        '#32363a', '')
@@ -247,12 +247,12 @@ call s:_('Whitespace',      '#8f9aa9',        '',        '')
 
 
 call s:_('AutoHL',          '',     theme.bg,  'none')
-call s:_('Highlight',       'none', theme.bg_selection_light,       'none')
-call s:_('HighlightSubtle', 'none', theme.bg_selection_very_light, 'none')
+call s:_('Highlight',       '',     theme.bg_selection_light,       'none')
+call s:_('HighlightSubtle', '',     theme.bg_selection_very_light, 'none')
 
 call s:_('Key',             '#799d6a', '', '')
 call s:_('Question',        '#65C254', '', '',     'Green', '')
-call s:_('Todo',            '#3b84ea', 'none', 'bold')
+call s:_('Todo',            '#3b84ea', '', 'bold')
 
 call s:_('File',            theme.fg,  '',     'bold')
 call s:_('Directory',       '#3365CE', '',     'bold')
@@ -344,10 +344,10 @@ call s:_('Class',                s:gh_red, '',        'none')
 call s:_('Structure',            s:gh_red, '',        'none')
 call s:_('Typedef',              s:gh_red, '',        'none')
 
-call s:_('Regexp',               '#dd0093', 'none',        'none')
-call s:_('RegexpSpecial',        '#a40073', 'none',        'none')
-call s:_('RegexpDelimiter',      '#540063', 'none',        'bold')
-call s:_('RegexpKey',            '#5f0041', 'none',        'bold')
+call s:_('Regexp',               '#dd0093', '',        'none')
+call s:_('RegexpSpecial',        '#a40073', '',        'none')
+call s:_('RegexpDelimiter',      '#540063', '',        'bold')
+call s:_('RegexpKey',            '#5f0041', '',        'bold')
 
 " }}}
 " Diff {{{
@@ -477,6 +477,7 @@ hi! link objcMessageName Identifier
 " COC {{{2
 
 call s:_('CocCodeLens', theme.fg_widget_dark, '', 'italic')
+call s:_('CocFadeOut', theme.fg_subtle, '', 'italic')
 " hi! link CocVirtualText Comment
 " hi! link CocCursorRange Search
 " hi! link CocDeprecatedHighlight CocStrikeThrough
@@ -484,7 +485,6 @@ call s:_('CocCodeLens', theme.fg_widget_dark, '', 'italic')
 " hi! link CocErrorHighlight DiagnosticUnderlineError
 " hi! link CocErrorSign DiagnosticSignError
 " hi! link CocErrorVirtualText DiagnosticVirtualTextError
-" hi! link CocFadeOut Conceal
 " hi! link CocFloatActive CocSearch
 " hi! link CocFloatDividingLine CocVirtualText
 " hi! link CocFloatSbar PmenuSbar
@@ -545,7 +545,7 @@ call s:_('GitGutterDelete', '#ff55e2', theme.bg_verysubtle, 'none')
 
 " Telescope {{{2
 
-call s:_('TelescopeTitle', '', 'none', '')
+" call s:_('TelescopeTitle', '', '', '')
 
 " 2}}}
 
