@@ -187,11 +187,11 @@ call s:_('StatusLinePartNC', theme.fg_widget_alt_nc, theme.bg_widget_alt_nc,    
 call s:_('Separator',      '#4c4c4c',           '',                  '')
 call s:_('VertSplit',      theme.fg_widget,     theme.bg_verysubtle,    'none')
 
-call s:_('Pmenu',            theme.fg_overlay, theme.bg_overlay)
+call s:_('Pmenu',            theme.fg,         theme.bg_popover)
 call s:_('PmenuSel',         theme.hl_fg,      theme.hl)
 call s:_('PmenuSelBold',     theme.hl_fg,      theme.hl, 'bold')
-call s:_('PmenuSbar',        '',       theme.bg_dark)
-call s:_('PmenuThumb',       '#666660', '#666660')
+call s:_('PmenuSbar',        '',               theme.bg_dark)
+call s:_('PmenuThumb',       '#666660',        '#666660')
 
 if exists('&pumblend')
   set pumblend=10
@@ -478,6 +478,8 @@ hi! link objcMessageName Identifier
 
 call s:_('CocCodeLens', theme.fg_widget_dark, '', 'italic')
 call s:_('CocFadeOut', theme.fg_subtle, '', 'italic')
+call s:_('CocFloating', theme.fg, theme.bg_popover, '')
+call s:_('CocMenuSel', theme.hl_fg, theme.hl, '')
 " hi! link CocVirtualText Comment
 " hi! link CocCursorRange Search
 " hi! link CocDeprecatedHighlight CocStrikeThrough
